@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Clases",
+    "slug": "Clases",
+    "version": "1.1.0",
+    "orientation": "portrait",
+    "icon": "./icono2.png",
+    "splash": {
+      "image": "./icono.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./icono2.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.Jc17.clases"
+    },
+    "web": {
+      "favicon": "./favicon.ico"
+    }
+  }
+}
