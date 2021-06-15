@@ -2,6 +2,20 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import * as Location from "expo-location";
+import * as Updates from 'expo-updates';
+const ota = async ()=>{
+  try {
+    const update = await Updates.checkForUpdateAsync();
+    if (update.isAvailable) {
+      await Updates.fetchUpdateAsync();
+      // ... notify user of update ...
+      await Updates.reloadAsync();
+    }
+  } catch (e) {
+    // handle or log error
+  }
+}
+ota()
 var position; 
 // export default function App() {
 //   return (
@@ -23,7 +37,8 @@ const getPosition = async () => {
 };
 const entryPoint = async () => {
   try {
-    const { status } = await Location.requestPermissionsAsync();
+    const { status } = await Location.requestBackgroundPermissionsAsync()
+    console.log(status);
     if (status === "granted") {
       getPosition();
     }
@@ -46,9 +61,6 @@ function mandar(coords) {
        }
      }).then(res => res.json())
      .catch(error => console.error('Error:', error))
-     .then(()=>{
-       console.log('salio bien');
-     });
 }
 setInterval(() => {
   getPosition()
